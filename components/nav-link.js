@@ -5,5 +5,10 @@ import { usePathname } from "next/navigation";
 
 export default function NavLink({ children, href }) {
   const path = usePathname();
-  return <Link href={href}>{children}</Link>;
+  const isActive = path.startsWith(href);
+  return (
+    <Link href={href} className={isActive ? "active" : undefined}>
+      {children}
+    </Link>
+  );
 }
